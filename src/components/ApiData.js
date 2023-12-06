@@ -1,17 +1,14 @@
-// components/ApiData.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import fetchData from '../utils/api';
 
 const ApiData = () => {
   const [data, setData] = useState([]);
-
 
   const handleFetchData = async () => {
     try {
       const apiUrl = 'https://api.artic.edu/api/v1/artworks';
       const result = await fetchData(apiUrl);
 
-    
       if (Array.isArray(result.data)) {
         setData(result.data);
       } else {
@@ -22,14 +19,9 @@ const ApiData = () => {
     }
   };
 
-  useEffect(() => {
-
-    handleFetchData();
-  }, []);
-
   return (
     <div>
-      <button onClick={() => handleFetchData()}>Fetch Data</button>
+      <button onClick={handleFetchData}>Fetch Data</button>
       <ul>
         {data.map((item) => (
           <ApiItem key={item.id} data={item} />
@@ -41,8 +33,8 @@ const ApiData = () => {
 
 const ApiItem = ({ data }) => (
   <li>
-    {}
-    {}
+    <p>ID: {data.id}</p>
+    <p>Title: {data.title}</p>
   </li>
 );
 

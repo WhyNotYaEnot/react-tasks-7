@@ -1,4 +1,3 @@
-// utils/api.js
 const fetchData = async (apiUrl) => {
     try {
       const response = await fetch(apiUrl);
